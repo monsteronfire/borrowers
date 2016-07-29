@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-export default Ember.Componenet.extend({
+export default Ember.Component.extend({
   actions: {
     save() {
       console.log('+- save action in edit-form component');
