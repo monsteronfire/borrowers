@@ -22,7 +22,7 @@ export default Ember.Component.extend({
         return this.save(friend);
       }, (err) => {
         this.set('errorMessage', 'there was something wrong saving the model');
-      })
+      });
       this.save(this.get('model'));
     },
     cancel() {
