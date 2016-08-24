@@ -18,16 +18,20 @@ export default Ember.Component.extend({
   actions: {
     save() {
       console.log('+- save action in edit-form component');
-      this.get('model').save().then((friend) => {
-        return this.save(friend);
-      }, (err) => {
-        this.set('errorMessage', 'there was something wrong saving the model');
-      });
-      this.save(this.get('model'));
+      if (this.get('isValid')) {
+        this.get('model').save().then((friend) => {
+          return this.save(friend);
+        }, (err) => {
+          this.set('errorMessage', 'there was something wrong saving the model');
+        });
+      } else {
+        this.set('errorMessage', 'you have to fill all the fields');
+      }
     },
+
     cancel() {
       console.log('+- cancel action in edit-form component');
-      this.cancel();
+      this.cancel(this.get('model'));
     }
   }
 });
