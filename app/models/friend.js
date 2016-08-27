@@ -11,7 +11,7 @@ export default Model.extend({
 
   fullName: Ember.computed('firstName', 'lastName', {
     get() {
-      return `${this.get('firstName')} ${this.get('lastName')}`
+      return `${this.get('firstName')} ${this.get('lastName')}`;
     }
   })
 });
