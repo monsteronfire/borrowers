@@ -4,6 +4,9 @@ import attr from 'ember-data/attr';
 import { belongsTo } from 'ember-data/relationships';
 
 export default Model.extend({
-  name: attr('string'),
-  loans: attr('loan')
+  notes: attr('string'),
+  returned: attr('boolean'),
+  createdAt: attr('date'),
+  friend: belongsTo('friend'),
+  article: belongsTo('article')
 });
