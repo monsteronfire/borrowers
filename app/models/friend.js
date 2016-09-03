@@ -2,6 +2,7 @@ import Model from 'ember-data/model';
 import attr from 'ember-data/attr';
 import { hasMany } from 'ember-data/relationships';
 import Ember from 'ember';
+import changeGate from 'ember-computed-change-gate/change-gate';
 
 export default Model.extend({
   firstName: attr('string'),
@@ -14,5 +15,9 @@ export default Model.extend({
     get() {
       return `${this.get('firstName')} ${this.get('lastName')}`;
     }
+  }),
+
+  capitalizeFirstName: changeGate('firstName', function (firstName) {
+    return Ember.String.capitalize(firstName);
   })
 });
