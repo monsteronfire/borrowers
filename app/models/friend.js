@@ -15,9 +15,9 @@ export default Model.extend({
     get() {
       return `${this.get('firstName')} ${this.get('lastName')}`;
     }
-  }),
-
-  capitalizeFirstName: changeGate('firstName', function (firstName) {
-    return Ember.String.capitalize(firstName);
   })
+
+  //capitalizeFirstName: changeGate('firstName', function (firstName) {
+    //return Ember.String.capitalize(firstName);
+  //})
 });
