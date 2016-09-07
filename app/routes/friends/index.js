@@ -1,8 +1,28 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  model() {
-    //return this.store.query('friend', {include: 'loans, loans.article'});
-    return this.store.query('friend', {include: 'loans'});
+  queryParams: {
+    sortBy: {
+      refreshModel: true
+    },
+
+    sortAscending: {
+      refreshModel: true
+    }
+  },
+
+  model(params) {
+    //let query = { include: 'loans, loans.article' };
+    let query = { include: 'loans' };
+
+    if (params.sortBy) {
+      query.sort = params.sortBy;
+
+      if (!params.sortAscending) {
+        query.sort = `-${query.sort}`;
+      }
+    }
+
+    return this.store.query('friend', query);
   }
 });
